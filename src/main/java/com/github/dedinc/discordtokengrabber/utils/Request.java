@@ -15,7 +15,7 @@ public class Request {
             okhttp3.Request request = new okhttp3.Request.Builder()
                     .url(url)
                     .post(body)
-                    .build();
+                    .build();;
             Response response = client.newCall(request).execute();
             return response.body().string();
         } catch (Exception e) {
@@ -23,12 +23,21 @@ public class Request {
         return null;
     }
 
-    public String get(String url) {
+    public String get(String url, String token) {
         try {
             OkHttpClient client = new OkHttpClient();
-            okhttp3.Request req = new okhttp3.Request.Builder()
-                    .url(url)
-                    .build();
+            okhttp3.Request req;
+            if (token == null) {
+                req = new okhttp3.Request.Builder()
+                        .url(url)
+                        .build();
+            } else {
+                req = new okhttp3.Request.Builder()
+                        .url(url)
+                        .header("User-Agent", Helper.getUserAgents().getAgent())
+                        .header("Authorization", token)
+                        .build();
+            }
             Response res = client.newCall(req).execute();
             return res.body().string();
         } catch (Exception e) {

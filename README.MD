@@ -6,6 +6,7 @@
 - VK Sender
 - Very fast
 - Many applications are supported
+- Undetectable
 
 <h1 align="center">-Support-</h1>
 
