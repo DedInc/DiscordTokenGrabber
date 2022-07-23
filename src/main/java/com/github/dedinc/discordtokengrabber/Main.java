@@ -61,7 +61,7 @@ public class Main {
                                         }
                                     }
                                 }
-                            } catch (Exception e) {}
+                            } catch (Exception e) {e.printStackTrace();}
                         }
                     });
         } catch (Exception e) {}

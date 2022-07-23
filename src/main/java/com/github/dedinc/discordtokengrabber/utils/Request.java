@@ -17,7 +17,9 @@ public class Request {
                     .post(body)
                     .build();;
             Response response = client.newCall(request).execute();
-            return response.body().string();
+            String resp = response.body().string();
+            response.close();
+            return resp;
         } catch (Exception e) {
         }
         return null;
@@ -39,7 +41,9 @@ public class Request {
                         .build();
             }
             Response res = client.newCall(req).execute();
-            return res.body().string();
+            String resp = res.body().string();
+            res.close();
+            return resp;
         } catch (Exception e) {
         }
         return null;
