@@ -7,6 +7,7 @@
 - Very fast
 - Many applications are supported
 - Undetectable
+- Decrypter
 
 <h1 align="center">-Support-</h1>
 
