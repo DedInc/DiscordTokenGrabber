@@ -1,10 +1,10 @@
 package com.github.dedinc.discordtokengrabber.utils;
 
-import org.json.JSONObject;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import org.json.JSONObject;
 
 public class Request {
     public String post(String url, JSONObject json) {
@@ -20,8 +20,7 @@ public class Request {
             String resp = response.body().string();
             response.close();
             return resp;
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
         return null;
     }
 
@@ -44,8 +43,7 @@ public class Request {
             String resp = res.body().string();
             res.close();
             return resp;
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
         return null;
     }
 }

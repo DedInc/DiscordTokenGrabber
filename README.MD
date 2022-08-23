@@ -11,13 +11,17 @@
 
 <h1 align="center">-Support-</h1>
 
-- Chrome
-- Yandex
-- Opera Stable
-- Opera GX
-- Firefox
-- Edge
+- 360Browser
 - Brave
+- Chrome
+- CocCoc
 - Discord App
 - Discord Canary
 - Discord PTB
+- Edge
+- Epic Privacy
+- Firefox
+- Opera GX
+- Opera Stable
+- Vivaldi
+- Yandex
