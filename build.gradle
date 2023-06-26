@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.github.dedinc'
-version '1.6'
+version '1.7'
 
 repositories {
     mavenCentral()
@@ -18,7 +18,7 @@ jar{
 }
 
 dependencies {
-    implementation 'org.json:json:20220320'
-    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
+    implementation 'org.json:json:20230227'
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
     implementation 'net.java.dev.jna:jna-platform:5.12.1'
 }

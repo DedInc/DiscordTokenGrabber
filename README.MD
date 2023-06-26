@@ -8,20 +8,32 @@
 - Many applications are supported
 - Undetectable
 - Decrypter
+- Nitro checker
 
 <h1 align="center">-Support-</h1>
 
 - 360Browser
+- Amigo
 - Brave
+- CentBrowser
 - Chrome
+- Chrome Beta
+- Chrome SxS
 - CocCoc
 - Discord App
 - Discord Canary
 - Discord PTB
+- Lightcord
 - Edge
 - Epic Privacy
 - Firefox
+- Iridium
+- Kometa
 - Opera GX
 - Opera Stable
+- Orbitum
+- Sputnik
+- Torch
+- Uran
 - Vivaldi
 - Yandex

