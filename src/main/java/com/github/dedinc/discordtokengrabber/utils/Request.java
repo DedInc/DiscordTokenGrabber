@@ -20,7 +20,7 @@ public class Request {
             String resp = response.body().string();
             response.close();
             return resp;
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
         return null;
     }
 
@@ -43,7 +43,7 @@ public class Request {
             String resp = res.body().string();
             res.close();
             return resp;
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
         return null;
     }
 }

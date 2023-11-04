@@ -2,16 +2,22 @@
 
 <h1 align="center">-Features-</h1>
 
-- Discord Sender
-- VK Sender
 - Very fast
 - Many applications are supported
 - Undetectable
-- Decrypter
-- Nitro checker
+- Tokens Decrypter
+- Checker
+  - User info (Email, Phone, Bio, 2FA, etc...)
+  - Nitro
+  - Badges
+  - Payments
+- Senders
+  - Discord
+  - VK
 
 <h1 align="center">-Support-</h1>
 
+- 7Star
 - 360Browser
 - Amigo
 - Brave
@@ -23,17 +29,20 @@
 - Discord App
 - Discord Canary
 - Discord PTB
-- Lightcord
 - Edge
 - Epic Privacy
 - Firefox
 - Iridium
 - Kometa
+- Lightcord
 - Opera GX
 - Opera Stable
 - Orbitum
+- Pale Moon
+- Seamonkey
 - Sputnik
 - Torch
 - Uran
 - Vivaldi
+- Waterfox
 - Yandex
